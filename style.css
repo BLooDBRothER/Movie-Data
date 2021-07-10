@@ -3,3 +3,156 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root{
+    --dark-blue: #121420;
+    --mid-blue: #1B2432;
+    --light-blue: #6D7993;
+    --coral: #96858F;
+    --grey: #9099A2;
+    --snadal: #D5D5D5;
+}
+
+html{
+    background: var(--dark-blue);
+    color: var(--coral);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body{
+    min-height: 100vh;
+}
+
+header{
+    background: var(--coral);
+    color: var(--mid-blue);
+    height: 80px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search{
+    position: relative;
+    margin: 1rem auto;
+    width: clamp(350px, 50vw, 450px);
+    transition: width .5s ease;
+}
+
+::placeholder {
+    color: var(--dark-blue);
+    opacity: .6; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: var(--dark-blue);
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: var(--dark-blue);
+  }
+
+.search-txt{
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    width: 50px;
+    width: 100%;
+    height: 50px;
+    font-size: clamp(.8rem, 4vw, 1.2rem);
+    padding: 1rem 2rem 1rem 1rem;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    
+}
+
+.search-ic-cnt{
+    top: 50%;
+    transform: translateY(-50%);
+    right: .3rem;
+    position: absolute;
+    background-color: var(--dark-blue);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.close-ic-cnt{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-47%);
+    right: -4rem;
+    display: none;
+}
+
+.search-ic, .close-ic{
+    width: 20px;
+    height: 20px;
+}
+
+.close-ic{
+    width: 40px;
+    height: 40px;
+}
+
+#title{
+    margin: 1rem 0;
+    text-align: center;
+    font-size: clamp(1rem, 7vw, 4rem);
+}
+
+.image-container{
+    max-height: 70vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem .5rem;
+    overflow: hidden;
+}
+
+@keyframes fadeIn{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes fadeOut{
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
+img{
+    margin: 0 1rem;
+}
+
+@media (max-width: 540px){
+    img{
+        width: 100%;
+    }
+}
+
+@media (min-width: 401px){
+    .close-ic-cnt{
+        display: none !important;
+    }
+}
+
+@media (max-width: 400px){
+    .search{
+        width: 50px;
+        margin: 1rem .5rem;
+    }
+
+    .search-active{
+        width: 70%;
+        
+    }
+
+    .search-txt{
+        padding-right: 1rem;
+    }
+}
