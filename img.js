@@ -49,8 +49,12 @@ function updateImage() {
     setTimeout(() => {
       img.style.animation = "fadeOut 1s ease 1";
     }, 4000);
+    img.addEventListener("animationend", function(e){
+        if(e.animationName == "fadeIn") return;
+        updateImage();
+    });
   });
-  setTimeout(updateImage, 5000);
+//   setTimeout(updateImage, 5000);
 }
 
 
