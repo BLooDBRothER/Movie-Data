@@ -43,9 +43,9 @@ function updateImageSrc(img) {
   }
   console.log(count);
   img.src = imgarr[count];
-  // img.style.animation = "fadeIn 1s ease";
-  img.classList.remove("fadeOut");
-  img.classList.add("fadeIn");
+  img.style.animation = "fadeIn 1s ease";
+  // img.classList.remove("fadeOut");
+  // img.classList.add("fadeIn");
   count++;
 }
 
@@ -54,13 +54,18 @@ function updateImage() {
     if (img.style.display == "none") return;
     updateImageSrc(img);
     setTimeout(() => {
-      img.classList.remove("fadeIn");
-      img.classList.add("fadeOut");
+      // img.classList.remove("fadeIn");
+      // img.classList.add("fadeOut");
+      img.style.animation = "fadeOut 1s ease";
     }, 4000);
   });
-  setTimeout(updateImage, 6000);
+  // setTimeout(updateImage, 6000);
 }
 
+imgs[0].addEventListener("animationend", function(e){
+  if(e.animationName == "fadeIn") return;
+  updateImage();
+});
 
 updateArray();
 

@@ -118,19 +118,18 @@ header{
 
 .thumb-img{
     margin: 0 1rem;
-    opacity: 0;
-    transition: opacity 1s ease;
+    /* transition: opacity 1s ease; */
 }
 
-.fadeIn{
+/* .fadeIn{
     opacity: 1;
 }
 
 .fadeOut{
     opacity: 0;
-}
+} */
 
-/* @keyframes fadeIn{
+@keyframes fadeIn{
     0%{opacity: 0;}
     100%{opacity: 1;}
 }
@@ -138,7 +137,7 @@ header{
 @keyframes fadeOut{
     0%{opacity: 1;}
     100%{opacity: 0;}
-} */
+}
 
 @media (max-width: 540px){
     img{
