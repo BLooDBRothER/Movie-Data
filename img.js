@@ -43,23 +43,22 @@ function updateImageSrc(img) {
   }
   console.log(count);
   img.src = imgarr[count];
-  // img.style.animation = "fadeIn 1s ease 1";
-  img.classList.remove("transparent");
+  // img.style.animation = "fadeIn 1s ease";
+  img.classList.remove("fadeOut");
+  img.classList.add("fadeIn");
   count++;
 }
 
 function updateImage() {
   imgs.forEach((img) => {
     if (img.style.display == "none") return;
-    console.log(img);
     updateImageSrc(img);
+    setTimeout(() => {
+      img.classList.remove("fadeIn");
+      img.classList.add("fadeOut");
+    }, 4000);
   });
-  setTimeout(() => {
-    imgs.forEach((img) => {
-        img.classList.add("transparent");
-    });
-  }, 4000);
-  setTimeout(updateImage, 5000);
+  setTimeout(updateImage, 6000);
 }
 
 
