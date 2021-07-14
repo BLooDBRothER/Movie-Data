@@ -12,11 +12,11 @@ async function updateArray(){
     popularMovie = result.results;
     popularMovie.forEach(movie => {
         imgarr.push(imgurl+movie.poster_path);
-        console.log(movie.title);
+        // console.log(movie.title);
     });
     hideImage3(img3, 0);
     hideImage2(img2, 0);
-    // updateImage();
+    updateImage();
     setInterval(updateImage, 5000);
 }
 

@@ -1,4 +1,5 @@
 const search = document.querySelector(".search");
+const searchInput = document.querySelector(".search-txt");
 const search_ic = document.querySelector(".search-ic-cnt");
 const close_ic = document.querySelector(".close-ic-cnt");
 
@@ -9,12 +10,19 @@ let popularMovie = [];
 const imgarr = [];
 
 search_ic.addEventListener("click", function(){
-    search.classList.add("search-active");
-    close_ic.style.display = "initial";
+    if(!search.classList.contains("search-active")){
+        searchInput.style.pointerEvents = "initial";
+        search.classList.add("search-active");
+        close_ic.style.display = "initial";
+        return
+    }
+    console.log(searchInput.value); 
 });
 
 close_ic.addEventListener("click", function(){
     search.classList.remove("search-active");
     close_ic.style.display = "none";
+    searchInput.value = "";
+    searchInput.style.pointerEvents = "none";
 });
 
