@@ -118,16 +118,7 @@ header{
 
 .thumb-img{
     margin: 0 1rem;
-    /* transition: opacity 1s ease; */
 }
-
-/* .fadeIn{
-    opacity: 1;
-}
-
-.fadeOut{
-    opacity: 0;
-} */
 
 @keyframes fadeIn{
     0%{opacity: 0;}

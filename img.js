@@ -16,7 +16,7 @@ async function updateArray(){
     });
     hideImage3(img3, 0);
     hideImage2(img2, 0);
-    updateImage();
+    setTimeout(updateImage, 1000);
 }
 
 function hideImage3(x, val) {
@@ -44,8 +44,6 @@ function updateImageSrc(img) {
   console.log(count);
   img.src = imgarr[count];
   img.style.animation = "fadeIn 1s ease";
-  // img.classList.remove("fadeOut");
-  // img.classList.add("fadeIn");
   count++;
 }
 
@@ -54,12 +52,9 @@ function updateImage() {
     if (img.style.display == "none") return;
     updateImageSrc(img);
     setTimeout(() => {
-      // img.classList.remove("fadeIn");
-      // img.classList.add("fadeOut");
       img.style.animation = "fadeOut 1s ease";
     }, 4000);
   });
-  // setTimeout(updateImage, 6000);
 }
 
 imgs[0].addEventListener("animationend", function(e){
