@@ -16,7 +16,8 @@ async function updateArray(){
     });
     hideImage3(img3, 0);
     hideImage2(img2, 0);
-    setTimeout(updateImage, 1000);
+    // updateImage();
+    setInterval(updateImage, 5000);
 }
 
 function hideImage3(x, val) {
@@ -43,7 +44,7 @@ function updateImageSrc(img) {
   }
   console.log(count);
   img.src = imgarr[count];
-  img.style.animation = "fadeIn 1s ease";
+  // img.style.animation = "fadeIn 1s ease";
   count++;
 }
 
@@ -51,16 +52,17 @@ function updateImage() {
   imgs.forEach((img) => {
     if (img.style.display == "none") return;
     updateImageSrc(img);
-    setTimeout(() => {
-      img.style.animation = "fadeOut 1s ease";
-    }, 4000);
+    // setTimeout(() => {
+    //   img.style.animation = "fadeOut 1s ease";
+    // }, 4000);
   });
+  // setTimeout(updateImage, 5000);
 }
 
-imgs[0].addEventListener("animationend", function(e){
-  if(e.animationName == "fadeIn") return;
-  updateImage();
-});
+// imgs[0].addEventListener("animationend", function(e){
+//   if(e.animationName == "fadeIn") return;
+//   updateImage();
+// });
 
 updateArray();
 

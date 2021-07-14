@@ -117,6 +117,8 @@ header{
 }
 
 .thumb-img{
+    width: 400px;
+    height: auto;
     margin: 0 1rem;
 }
 
@@ -131,7 +133,7 @@ header{
 }
 
 @media (max-width: 540px){
-    img{
+    .thumb-img{
         width: 100%;
     }
 }
