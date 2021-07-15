@@ -1,5 +1,3 @@
-
-
 let count = 0;
 const imgs = document.querySelectorAll(".thumb-img");
 
@@ -42,7 +40,7 @@ function updateImageSrc(img) {
   if (count == imgarr.length) {
     count = 0;
   }
-  console.log(count);
+  // console.log(count);
   img.src = imgarr[count];
   // img.style.animation = "fadeIn 1s ease";
   count++;
