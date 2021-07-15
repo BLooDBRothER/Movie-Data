@@ -204,7 +204,7 @@ main {
   height: 750px;
   color: var(--dark-blue);
   background-color: var(--light-blue);
-  margin: 0 1rem;
+  margin: 0 2rem;
   padding: 0 0 1rem 0;
   position: relative;
   /* overflow: hidden; */

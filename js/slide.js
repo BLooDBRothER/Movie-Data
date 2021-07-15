@@ -1,24 +1,29 @@
-const slider = document.querySelector(".slider__cnt");
+const sliders = document.querySelectorAll(".slider__cnt");
 const cards = document.querySelectorAll(".card");
 const cardimgs = document.querySelectorAll(".card img");
-const startdrag = document.querySelector(".start-drag");
-const enddrag = document.querySelector(".end-drag");
+const startdrags = document.querySelectorAll(".start-drag");
+const enddrags = document.querySelectorAll(".end-drag");
 const navbtn = document.querySelectorAll(".slider__navigation"); 
 
 let clicked = true, pressed = false, startX, valX, scrollLeft;
 let effectWidth = 0;
-let scrollMax;
+let scrollMax = {};
 
 function updateMaxScroll(){
-    scrollMax = slider.scrollWidth - slider.offsetWidth;
-    // console.log(slider.scrollLeft, slider.scrollWidth, scrollMax);
-    startdrag.style.left = `0px`;
-    enddrag.style.left = `${slider.scrollWidth}px`;
+    scrollMax = {}
+    sliders.forEach(slider => {
+        let datavalue = slider.dataset.value;
+        scrollMax[datavalue] = slider.scrollWidth - slider.offsetWidth;
+        console.log(slider.scrollWidth)
+        slider.querySelector(".start-drag").style.left = `0px`;
+        slider.querySelector(".end-drag").style.left = `${slider.scrollWidth}px`;
+    });
 }
 
 function updateDrag(ele, val){
-    val = ele == startdrag ? (-1 * val) : val;
-    let transform = ele == startdrag ? "none" : `translateX(-${effectWidth}px)`;
+    console.log(ele)
+    val = ele.classList.contains("start-drag") ? (-1 * val) : val;
+    let transform = ele.classList.contains("start-drag") ? "none" : `translateX(-${effectWidth}px)`;
     if(val > 0){
         ele.style.width = `${effectWidth}px`;
         ele.style.transform = transform;
@@ -33,17 +38,18 @@ function updateDrag(ele, val){
 
 function resetDrag(){
     effectWidth = 0;
-    startdrag.style.width = enddrag.style.width = `0px`;
-    startdrag.style.transform = enddrag.style.width = "none";
+    for(let i = 0 ; i<startdrags.length ; i++){
+        startdrags[i].style.width = enddrags[i].style.width = `0px`;
+        startdrags[i].style.transform = enddrags[i].style.width = "none";
+    }
 }
 
 function setX(e){
     pressed=true;
     valX = (e.pageX || e.touches[0].pageX);
-    startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-    // console.log(e.pageX || e.touches[0].pageX);
-    scrollLeft = slider.scrollLeft;
-    slider.style.cursor = "grabbing";  
+    startX = (e.pageX || e.touches[0].pageX) - this.offsetLeft;
+    scrollLeft = this.scrollLeft;
+    this.style.cursor = "grabbing";  
 }
 
 function sliderMove(e){
@@ -51,14 +57,14 @@ function sliderMove(e){
     // e.preventDefault();
 
     clicked = false;
-    let x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+    let x = (e.pageX || e.touches[0].pageX) - this.offsetLeft;
     const walk = (x - startX);
-    slider.scrollLeft = (scrollLeft - walk);
-    // console.log(slider.scrollLeft, slider.scrollWidth, scrollMax);
+    this.scrollLeft = (scrollLeft - walk);
     
     cards.forEach(card => {card.style.cursor = "grabbing";});
-    if(Math.ceil(slider.scrollLeft) == scrollMax || slider.scrollLeft == 0){
-        ele = slider.scrollLeft == 0 ? startdrag : enddrag; 
+    if(Math.ceil(this.scrollLeft) == scrollMax[this.dataset.value] || this.scrollLeft == 0){
+        console.log("hello");
+        ele = this.scrollLeft == 0 ? this.querySelector(".start-drag") : this.querySelector(".end-drag"); 
         let val = (valX - (e.pageX || e.touches[0].pageX));
         valX = (e.pageX || e.touches[0].pageX);
         updateDrag(ele, val); 
@@ -70,29 +76,46 @@ function unSet(e){
     clicked = true;
 
     resetDrag();
-    
-    slider.style.cursor = "grab"; 
+
+    sliders.forEach(slider => {slider.style.cursor = "grab";});
     cards.forEach(card => {card.style.cursor = "pointer";}); 
 }
 
 function updateCard(){
-    // card size 332;
-    let updateVal = slider.scrollLeft - (slider.scrollLeft % 332);
-    let mod = (slider.scrollLeft % 332);
-    slider.scrollLeft = this.dataset.value == "next" ? updateVal+332 : (mod ? updateVal : (slider.scrollLeft - 332));
+    // card size calculation;
+    if(cards[0] == undefined) return;
+    let style = window.getComputedStyle ? getComputedStyle(cards[0], null) : cards[0].currentStyle;
+    let width = parseInt(style.width) + parseInt(style.marginLeft) + parseInt(style.marginRight);
+
+    let slider = document.querySelector(`.slider__cnt[data-value="${this.dataset.parent}"]`);
+    let updateVal = slider.scrollLeft - (slider.scrollLeft % width);
+    let mod = (slider.scrollLeft % width);
+    slider.scrollLeft = this.dataset.value == "next" ? updateVal+width : (mod ? updateVal : (slider.scrollLeft - width));
 }
 
-slider.addEventListener("mousedown", setX);
+sliders.forEach(slider => {
+    slider.addEventListener("mousedown", setX);
 
-slider.addEventListener("mousemove", sliderMove);
+    slider.addEventListener("mousemove", sliderMove);
+
+    slider.addEventListener("touchstart", setX);
+
+    slider.addEventListener("touchmove", sliderMove);
+
+    slider.addEventListener("touchend", unSet);
+
+    slider.oncontextmenu = function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+        return false
+    }
+});
+
+
 
 window.addEventListener("mouseup", unSet);
 
-slider.addEventListener("touchstart", setX);
 
-slider.addEventListener("touchmove", sliderMove);
-
-slider.addEventListener("touchend", unSet);
 
 navbtn.forEach(btn => {
     btn.addEventListener("click", updateCard);
@@ -111,12 +134,6 @@ cards.forEach(card => {
         console.log("hello");
     });
 });
-
-slider.oncontextmenu = function (event) {
-    event.preventDefault()
-    event.stopPropagation()
-    return false
-}
 
 window.onresize = window.onload = updateMaxScroll;
 

@@ -31,11 +31,12 @@
     </div>
 
     <main>
+
         <div class="slider">
             <h1 class="slider__title">Popular Movies</h1>
-            <div class="slider__cnt">
-                <div class="start-drag"></div>
-                <div class="end-drag"></div>
+            <div class="slider__cnt" data-value="popular">
+                <div class="start-drag" data-value="popular"></div>
+                <div class="end-drag" data-value="popular"></div>
                 <div class="card">
                     <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
                     <div class="card__details">
@@ -172,10 +173,245 @@
                 </div>
             </div>
             <div class="slider__navigations">
-                <img class="slider__navigation slider__next" data-value = "back" src="./Assets/backward.svg" alt="">
-                <img class="slider__navigation slider__previous" data-value = "next" src="./Assets/forward.svg" alt="">
+                <img class="slider__navigation slider__next" data-value = "back" data-parent = "popular" src="./Assets/backward.svg" alt="">
+                <img class="slider__navigation slider__previous" data-value = "next" data-parent = "popular" src="./Assets/forward.svg" alt="">
             </div>
         </div>
+        
+        <div class="slider">
+            <h1 class="slider__title">Latest Movies</h1>
+            <div class="slider__cnt" data-value="latest">
+                <div class="start-drag" data-value="latest"></div>
+                <div class="end-drag" data-value="latest"></div>
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 1</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 2</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 3</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 4</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 5</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 6</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 7</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 8</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+            </div>
+            <div class="slider__navigations">
+                <img class="slider__navigation slider__next" data-value = "back" data-parent = "latest" src="./Assets/backward.svg" alt="">
+                <img class="slider__navigation slider__previous" data-value = "next" data-parent = "latest" src="./Assets/forward.svg" alt="">
+            </div>
+        </div>
+
+        <div class="slider">
+            <h1 class="slider__title">Upcoming Movies</h1>
+            <div class="slider__cnt" data-value="upcoming">
+                <div class="start-drag" data-value="upcoming"></div>
+                <div class="end-drag" data-value="upcoming"></div>
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 1</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 2</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 3</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 4</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 5</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+                <div class="card">
+                    <img class="card__img" src="https://image.tmdb.org/t/p/original/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg" alt="">
+                    <div class="card__details">
+                        <h2 class="card__title">The Croods: A New Age 6</h2>
+                        <div class="card__genres">
+                            <div class="card__genre">Family</div>
+                            <div class="card__genre">Fantasy</div>
+                            <div class="card__genre">Animation</div>
+                            <div class="card__genre">Comedy</div>
+                        </div>
+                    </div>
+                    <div class="card__overview">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</div>
+                    <div class="card__rating">7.6</div>
+                </div>
+    
+            </div>
+            <div class="slider__navigations">
+                <img class="slider__navigation slider__next" data-value = "back" data-parent = "upcoming" src="./Assets/backward.svg" alt="">
+                <img class="slider__navigation slider__previous" data-value = "next" data-parent = "upcoming" src="./Assets/forward.svg" alt="">
+            </div>
+        </div>
+        
     </main>
 
     
