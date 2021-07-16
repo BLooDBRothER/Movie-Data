@@ -1,5 +1,5 @@
 
-let movieGenre;
+let movieGenre, j;
 
 function setRatingColor(rating){
     if(rating >= 7.5){
@@ -15,25 +15,50 @@ async function fetchMovies(){
     response = await fetch(trendingurl);
     result = await (response.json());
     movie["trendingMovie"] = result.results;
-    response = await fetch(upcomingurl);
-    result = await (response.json());
-    movie["upcomingMovie"] = result.results;
+
     response = await fetch(animatedurl);
     result = await (response.json());
     movie["animatedMovie"] = result.results;
+
     response = await fetch(horrorurl);
     result = await (response.json());
     movie["horrorMovie"] = result.results;
+
+    response = await fetch(upurl);
+    result = await (response.json());
+    movie["upMovie"] = result.results;
+
+    response = await fetch(hpurl);
+    result = await (response.json());
+    movie["hpMovie"] = result.parts;
+
     response = await fetch(marvelurl1);
     result = await (response.json());
     let marvel1 = result.results;
+
     response = await fetch(marvelurl2);
     result = await (response.json());
     let marvel2 = result.results;
+
     movie["marvelMovie"] = Object.assign(marvel1);
-    let j = marvel1.length;
+    j = marvel1.length;
     for(i in marvel2){
         movie["marvelMovie"] = Object.assign(movie["marvelMovie"], {[j]: marvel2[i]});
+        j++;
+    }
+
+    response = await fetch(tamilurl1);
+    result = await (response.json());
+    tamil1 = result.results;
+
+    response = await fetch(tamilurl2);
+    result = await (response.json());
+    tamil2 = result.results;
+
+    movie["tamillMovie"] = Object.assign(tamil1);
+    j = tamil1.length;
+    for(i in marvel2){
+        movie["tamilMovie"] = Object.assign(movie["tamillMovie"], {[j]: tamil2[i]});
         j++;
     }
 }
