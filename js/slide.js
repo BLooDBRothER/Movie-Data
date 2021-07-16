@@ -100,6 +100,10 @@ async function startCarousel(){
         slider.addEventListener("mousedown", setX);
     
         slider.addEventListener("mousemove", sliderMove);
+
+        slider.addEventListener("mouseleave", unSet);
+
+        slider.addEventListener("mouseup", unSet);
     
         slider.addEventListener("touchstart", setX);
     
@@ -114,7 +118,7 @@ async function startCarousel(){
         }
     });
     
-    window.addEventListener("mouseup", unSet);
+    // window.addEventListener("mouseup", unSet);
     
     navbtn.forEach(btn => {
         btn.addEventListener("click", updateCard);
