@@ -7,8 +7,10 @@ const img2 = window.matchMedia("(max-width: 1040px)");
 async function updateArray(){
     let response = await fetch(popularurl);
     let result = await (response.json());
-    popularMovie = result.results;
-    popularMovie.forEach(movie => {
+    movie["popularMovie"] = result.results;
+    // popularMovie = result.results;
+    // await fetchMovies();
+    movie["popularMovie"].forEach(movie => {
         imgarr.push(imgurl+movie.poster_path);
         // console.log(movie.title);
     });

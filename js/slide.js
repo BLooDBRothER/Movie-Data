@@ -1,27 +1,29 @@
 const sliders = document.querySelectorAll(".slider__cnt");
-const cards = document.querySelectorAll(".card");
-const cardimgs = document.querySelectorAll(".card img");
-const startdrags = document.querySelectorAll(".start-drag");
-const enddrags = document.querySelectorAll(".end-drag");
-const navbtn = document.querySelectorAll(".slider__navigation"); 
+let cards, cardimgs, startdrags, enddrags, navbtn; 
 
 let clicked = true, pressed = false, startX, valX, scrollLeft;
 let effectWidth = 0;
 let scrollMax = {};
 
+function updateVariable(){
+    cards = document.querySelectorAll(".card");
+    cardimgs = document.querySelectorAll(".card img");
+    startdrags = document.querySelectorAll(".start-drag");
+    enddrags = document.querySelectorAll(".end-drag");
+    navbtn = document.querySelectorAll(".slider__navigation"); 
+}
+
 function updateMaxScroll(){
-    scrollMax = {}
+    console.log("ma");
     sliders.forEach(slider => {
         let datavalue = slider.dataset.value;
         scrollMax[datavalue] = slider.scrollWidth - slider.offsetWidth;
-        console.log(slider.scrollWidth)
         slider.querySelector(".start-drag").style.left = `0px`;
         slider.querySelector(".end-drag").style.left = `${slider.scrollWidth}px`;
     });
 }
 
 function updateDrag(ele, val){
-    console.log(ele)
     val = ele.classList.contains("start-drag") ? (-1 * val) : val;
     let transform = ele.classList.contains("start-drag") ? "none" : `translateX(-${effectWidth}px)`;
     if(val > 0){
@@ -63,7 +65,6 @@ function sliderMove(e){
     
     cards.forEach(card => {card.style.cursor = "grabbing";});
     if(Math.ceil(this.scrollLeft) == scrollMax[this.dataset.value] || this.scrollLeft == 0){
-        console.log("hello");
         ele = this.scrollLeft == 0 ? this.querySelector(".start-drag") : this.querySelector(".end-drag"); 
         let val = (valX - (e.pageX || e.touches[0].pageX));
         valX = (e.pageX || e.touches[0].pageX);
@@ -72,6 +73,7 @@ function sliderMove(e){
 }
 
 function unSet(e){
+    if(!pressed) return;
     pressed=false;
     clicked = true;
 
@@ -93,47 +95,48 @@ function updateCard(){
     slider.scrollLeft = this.dataset.value == "next" ? updateVal+width : (mod ? updateVal : (slider.scrollLeft - width));
 }
 
-sliders.forEach(slider => {
-    slider.addEventListener("mousedown", setX);
-
-    slider.addEventListener("mousemove", sliderMove);
-
-    slider.addEventListener("touchstart", setX);
-
-    slider.addEventListener("touchmove", sliderMove);
-
-    slider.addEventListener("touchend", unSet);
-
-    slider.oncontextmenu = function (event) {
-        event.preventDefault()
-        event.stopPropagation()
-        return false
-    }
-});
-
-
-
-window.addEventListener("mouseup", unSet);
-
-
-
-navbtn.forEach(btn => {
-    btn.addEventListener("click", updateCard);
-});
-
-
-cardimgs.forEach(img =>{
-    img.addEventListener('dragstart', (e) => e.preventDefault());
-});
-
-
-
-cards.forEach(card => {
-    card.addEventListener("mouseup", (e) => {
-        if(!clicked) return;
-        console.log("hello");
+async function startCarousel(){
+    // await sliderContent();
+    console.log("finished");
+    updateVariable();
+    sliders.forEach(slider => {
+        slider.addEventListener("mousedown", setX);
+    
+        slider.addEventListener("mousemove", sliderMove);
+    
+        slider.addEventListener("touchstart", setX);
+    
+        slider.addEventListener("touchmove", sliderMove);
+    
+        slider.addEventListener("touchend", unSet);
+    
+        slider.oncontextmenu = function (event) {
+            event.preventDefault()
+            event.stopPropagation()
+            return false
+        }
     });
-});
+    
+    window.addEventListener("mouseup", unSet);
+    
+    navbtn.forEach(btn => {
+        btn.addEventListener("click", updateCard);
+    });
+    
+    cardimgs.forEach(img =>{
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+    
+    cards.forEach(card => {
+        card.addEventListener("mouseup", (e) => {
+            if(!clicked) return;
+        });
+    });
+    updateMaxScroll();
+    window.onresize = updateMaxScroll;
+}
 
-window.onresize = window.onload = updateMaxScroll;
+// startCarousel();
+
+// window.onresize = window.onload = updateMaxScroll;
 

@@ -120,20 +120,11 @@ header {
 }
 
 .thumb-img {
+  background-color: var(--mid-blue);
   width: 400px;
   height: auto;
   margin: 0 1rem;
 }
-
-/* @keyframes fadeIn{
-    0%{opacity: 0;}
-    100%{opacity: 1;}
-}
-
-@keyframes fadeOut{
-    0%{opacity: 1;}
-    100%{opacity: 0;}
-} */
 
 main {
     margin: 2rem 0;
