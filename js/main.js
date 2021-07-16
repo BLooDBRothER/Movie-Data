@@ -8,6 +8,11 @@ const close_ic = document.querySelector(".close-ic-cnt");
 const trendingurl = "https://api.themoviedb.org/3/trending/movie/day?api_key=5bbd27f8962722b1aa921d43db36211f";
 const upcomingurl = "https://api.themoviedb.org/3/movie/upcoming?api_key=5bbd27f8962722b1aa921d43db36211f&region=IN&page=1";
 const popularurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&region=IN&sort_by=popularity.desc";
+const animatedurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_genres=16";
+// const horrorurl = "https://api.themoviedb.org/3/search/movie?api_key=5bbd27f8962722b1aa921d43db36211f&query=Horror"; 
+const horrorurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_genres=27";
+const marvelurl1 = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_companies=420&page=1";
+const marvelurl2 = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_companies=420&page=2";
 
 
 //To Update image

@@ -14,7 +14,6 @@ function updateVariable(){
 }
 
 function updateMaxScroll(){
-    console.log("ma");
     sliders.forEach(slider => {
         let datavalue = slider.dataset.value;
         scrollMax[datavalue] = slider.scrollWidth - slider.offsetWidth;
@@ -96,8 +95,6 @@ function updateCard(){
 }
 
 async function startCarousel(){
-    // await sliderContent();
-    console.log("finished");
     updateVariable();
     sliders.forEach(slider => {
         slider.addEventListener("mousedown", setX);

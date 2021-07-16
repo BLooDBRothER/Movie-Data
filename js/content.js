@@ -2,10 +2,10 @@
 let movieGenre;
 
 function setRatingColor(rating){
-    if(rating > 7){
+    if(rating >= 7.5){
         return "green";
     }
-    if(rating < 7 && rating > 5){
+    if(rating < 7.5 && rating > 5){
         return "orange";
     }
     return "red";
@@ -18,22 +18,31 @@ async function fetchMovies(){
     response = await fetch(upcomingurl);
     result = await (response.json());
     movie["upcomingMovie"] = result.results;
+    response = await fetch(animatedurl);
+    result = await (response.json());
+    movie["animatedMovie"] = result.results;
+    response = await fetch(horrorurl);
+    result = await (response.json());
+    movie["horrorMovie"] = result.results;
+    response = await fetch(marvelurl1);
+    result = await (response.json());
+    let marvel1 = result.results;
+    response = await fetch(marvelurl2);
+    result = await (response.json());
+    let marvel2 = result.results;
+    movie["marvelMovie"] = Object.assign(marvel1);
+    let j = marvel1.length;
+    for(i in marvel2){
+        movie["marvelMovie"] = Object.assign(movie["marvelMovie"], {[j]: marvel2[i]});
+        j++;
+    }
 }
 
 async function returnCard(poster_path, title, overview, vote_average, id){
     const detailurl = `https://api.themoviedb.org/3/movie/${id}?api_key=5bbd27f8962722b1aa921d43db36211f`;
     poster_path = poster_path==null ? "" : `https://image.tmdb.org/t/p/original${poster_path}`;
-    // let card, genreTag, test;
-    // fetch(detailurl)
-    //                 .then(res => res.json())
-    //                 .then(movie => {
-    //                     // console.log(movie)
-    //                     genreTag = movie.genres.map(genre => {
-    //                         return `<div class="card__genre">${genre.name}</div>`
-    //                     }).join("");
-    //                 })
     let genreTag = await returnGenre(id);
-    card = `<div class="card">
+    card = `<div class="card" data-id="${id}">
                     <img class="card__img" src="${poster_path}" alt="">
                     <div class="card__details">
                         <h2 class="card__title">${title}</h2>
@@ -51,7 +60,6 @@ async function returnGenre(id){
     const detailurl = `https://api.themoviedb.org/3/movie/${id}?api_key=5bbd27f8962722b1aa921d43db36211f`;
     let response = await fetch(detailurl);
     let result = await response.json();
-    console.log(result);
     let genres = result.genres;
     movieGenre = genres.map(genre => {
         return `<div class="card__genre">${genre.name}</div>`
@@ -72,10 +80,8 @@ async function updateContent(){
         movies.forEach(async movie => {
             let result = await returnCard(movie.poster_path, movie.title, movie.overview, movie.vote_average, movie.id);
             cards += result;
-            console.log("running")
             if(movie == movies[movies.length-1]){
                 slider.innerHTML += cards;
-                console.log("ended");
                 startCarousel();
             }
         });
