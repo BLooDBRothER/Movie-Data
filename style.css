@@ -268,6 +268,18 @@ main {
   z-index: 10;
 }
 
+.green{
+  color: greenyellow;
+}
+
+.orange{
+  color: orange;
+}
+
+.red{
+  color: red;
+}
+
 @media (max-width: 401px) {
   .thumb-img {
     width: 100%;

@@ -1,6 +1,16 @@
 
 let movieGenre;
 
+function setRatingColor(rating){
+    if(rating > 7){
+        return "green";
+    }
+    if(rating < 7 && rating > 5){
+        return "orange";
+    }
+    return "red";
+}
+
 async function fetchMovies(){
     response = await fetch(trendingurl);
     result = await (response.json());
@@ -32,7 +42,7 @@ async function returnCard(poster_path, title, overview, vote_average, id){
                         </div>
                     </div>
                     <div class="card__overview">${overview}</div>
-                    <div class="card__rating">${vote_average}</div>
+                    <div class="card__rating ${setRatingColor(vote_average)}">${vote_average}</div>
                 </div>`
     return card;
 }
