@@ -3,6 +3,7 @@ const Movieposter = document.querySelector(".poster");
 const poster_cnt = document.querySelector(".poster__container");
 const genre_over = document.querySelector(".over_genre");
 const cast_slider = document.querySelector(".slider__cnt[data-value='cast']");
+const recommend_slider = document.querySelector(".slider__cnt[data-value='recommendation']");
 const media_h3 = document.querySelectorAll(".media__selection h3");
 const media_value = document.querySelectorAll(".media__selection .value");
 
@@ -51,7 +52,6 @@ function returnMovieLogo(){
   let path = ""
   details["images"].logos.forEach(logo => {
     if(logo.iso_639_1 == "en"){
-      console.log(logo.file_path)
       path = logo.file_path;
     }
   });
@@ -122,11 +122,20 @@ function returnCastCard(name, character, profile){
 
 }
 
+function returnCast(){
+  let card = `<div class="start-drag" data-value="cast"></div>
+  <div class="end-drag" data-value="cast"></div>`;
+  details.credits.forEach(credit => {
+    card += returnCastCard(credit.name, credit.character, credit.profile_path);
+  });
+  return card;
+
+}
+
 // media function
 
 function returnMedia(){
   let posterTag = "", backTag="";
-  console.log(details["images"])
   details["images"].posters.forEach(each => {
     posterTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
   });
@@ -158,16 +167,53 @@ function returnMedia(){
   // console.log(details["videos"])
 }
 
-function returnCast(){
-  let card = `<div class="start-drag" data-value="cast"></div>
-  <div class="end-drag" data-value="cast"></div>`;
-  console.log(details.credits);
-  details.credits.forEach(credit => {
-    card += returnCastCard(credit.name, credit.character, credit.profile_path);
-  });
-  return card;
+// Recommendation functions
 
+async function returnRecommendCard(poster_path, title, overview, vote_average, id){
+  poster_path = poster_path==null ? "" : `https://image.tmdb.org/t/p/original${poster_path}`;
+  let genreTag = await returnGenre(id);
+  card = `<div class="card" data-id="${id}">
+                  <img class="card__img" src="${poster_path}" alt="">
+                  <div class="card__details">
+                      <h2 class="card__title">${title}</h2>
+                      <div class="card__genres">
+                          ${genreTag}
+                      </div>
+                  </div>
+                  <div class="card__overview">${overview}</div>
+                  <div class="card__rating ${setRatingColor(vote_average)}">${vote_average.toFixed(1)}</div>
+              </div>`
+  return card;
 }
+
+async function returnGenre(id){
+  const detailurl = `https://api.themoviedb.org/3/movie/${id}?api_key=5bbd27f8962722b1aa921d43db36211f`;
+  let response = await fetch(detailurl);
+  let result = await response.json();
+  let genres = result.genres;
+  movieGenre = genres.map(genre => {
+      return `<div class="card__genre">${genre.name}</div>`
+  }).join("");
+  return movieGenre;
+}
+
+function setRecommended(){
+    let value = "recommendation";
+    recommend_slider.innerHTML = `<div class="start-drag" data-value="${value}"></div>
+                         <div class="end-drag" data-value="${value}"></div>`;
+    let movies = details["recommended"];
+    let cards = ""; 
+    
+    movies.forEach(async movie => {
+        let result = await returnRecommendCard(movie.poster_path, movie.title, movie.overview, movie.vote_average, movie.id);
+        cards += result;
+        if(movie == movies[movies.length-1]){
+          recommend_slider.innerHTML += cards;
+            startCarousel();
+    }
+});
+}
+
 
 async function fetchMovies() {
   response = await fetch(detailurl);
@@ -192,7 +238,10 @@ async function fetchMovies() {
   details["production"] = result.production_companies;
   details["spoken"] = result.spoken_languages;
   details["videos"] = result.videos.results;
-  console.log(result, details["images"].logos[0].file_path);
+  // console.log(result, details["images"].logos[0].file_path);
+  response = await fetch(recomendedurl);
+  result = await response.json();
+  details["recommended"] = result.results;
 }
 
 async function updateContent(){
@@ -205,6 +254,7 @@ async function updateContent(){
   startCarousel();
   returnMedia();
   media_cnt.innerHTML = poster;
+  setRecommended();
 }
 
 updateContent();
