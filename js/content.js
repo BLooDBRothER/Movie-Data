@@ -64,7 +64,6 @@ async function fetchMovies(){
 }
 
 async function returnCard(poster_path, title, overview, vote_average, id){
-    const detailurl = `https://api.themoviedb.org/3/movie/${id}?api_key=5bbd27f8962722b1aa921d43db36211f`;
     poster_path = poster_path==null ? "" : `https://image.tmdb.org/t/p/original${poster_path}`;
     let genreTag = await returnGenre(id);
     card = `<div class="card" data-id="${id}">
