@@ -84,9 +84,14 @@ function unSet(e){
 
 function updateCard(){
     // card size calculation;
+
+    let sliderCard = document.querySelector(`.slider__cnt[data-value='${this.dataset.parent}'] .card`);
+    console.log(sliderCard);
+    
     if(cards[0] == undefined) return;
-    let style = window.getComputedStyle ? getComputedStyle(cards[0], null) : cards[0].currentStyle;
+    let style = window.getComputedStyle ? getComputedStyle(sliderCard, null) : sliderCard.currentStyle;
     let width = parseInt(style.width) + parseInt(style.marginLeft) + parseInt(style.marginRight);
+    console.log(width, this);
 
     let slider = document.querySelector(`.slider__cnt[data-value="${this.dataset.parent}"]`);
     let updateVal = slider.scrollLeft - (slider.scrollLeft % width);
@@ -131,6 +136,8 @@ async function startCarousel(){
     cards.forEach(card => {
         card.addEventListener("mouseup", (e) => {
             if(!clicked) return;
+            console.log("clickd", card);
+            window.location.href = `./movie.html?movieid=${card.dataset.id}`;
         });
     });
     updateMaxScroll();

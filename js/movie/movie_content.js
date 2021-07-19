@@ -245,7 +245,9 @@ async function fetchMovies() {
 }
 
 async function updateContent(){
+  console.log(detailurl, recomendedurl);
   await fetchMovies();
+  console.log("fetched")
   header.innerHTML = returnHeader();
   Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}")`
   poster_cnt.innerHTML = returnPoster();
@@ -256,6 +258,8 @@ async function updateContent(){
   media_cnt.innerHTML = poster;
   setRecommended();
 }
+
+console.log("hello")
 
 updateContent();
 
