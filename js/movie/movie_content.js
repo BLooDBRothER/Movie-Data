@@ -249,7 +249,8 @@ async function updateContent(){
   await fetchMovies();
   console.log("fetched")
   header.innerHTML = returnHeader();
-  Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}")`
+  Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}") top`;
+  Movieposter.style.backgroundSize = "cover";
   poster_cnt.innerHTML = returnPoster();
   genre_over.innerHTML = returnGenreOver();
   cast_slider.innerHTML = returnCast();
