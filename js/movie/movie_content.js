@@ -282,7 +282,7 @@ function updateStream(){
   });
   providers.forEach(provider => {
     provider.addEventListener("click", ()=>{
-      window.open(streamlink, "_blank");
+      window.open(details["providers"].link, "_blank");
     });
   });
 }
@@ -311,7 +311,7 @@ async function fetchMovies() {
   details["spoken"] = result.spoken_languages;
   details["videos"] = result.videos.results;
   details["providers"] = result["watch/providers"].results["IN"];
-  streamlink = result["watch/providers"].results["IN"].link;
+  // streamlink = details["providers"] ? result["watch/providers"].results["IN"].link : "";
   imdburl = `https://www.imdb.com/title/${result.imdb_id}/`
   response = await fetch(recomendedurl);
   result = await response.json();
