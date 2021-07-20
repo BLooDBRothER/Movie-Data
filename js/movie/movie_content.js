@@ -154,22 +154,18 @@ function returnCast(){
 function returnMediaCont(){
   let posterTag = "", backTag="", i;
   let length = details["images"].posters.length;
-  console.log(length);
   for(i=0; (i < 11 && i < length) || (i == length-1); i++){
-    console.log(details["images"].posters[i].file_path);
     posterTag += `<img src="https://image.tmdb.org/t/p/original${details["images"].posters[i].file_path}" alt="" class="media__poster">`;
   }
   if(i < length){
-    posterTag += `<div class="load_more">
+    posterTag += `<div class="load_more" data-value="poster">
                       <img src="https://image.tmdb.org/t/p/original${details["images"].posters[i].file_path}" alt="" class="media__poster">
                       <div class="load_more_cnt">
                           <p>Load More <i class="fas fa-angle-right"></i></p>
                       </div>
                   </div>`
   }
-  // details["images"].posters.forEach(each => {
-  //   posterTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
-  // });
+ 
   poster = posterTag;
   media_value[0].innerHTML = length;
   document.documentElement.style
@@ -190,27 +186,45 @@ function returnMediaCont(){
   length = details["images"].backdrops.length;
 
   for(i=0; (i < 11 && i < length) || (i == length-1); i++){
-    console.log(details["images"].posters[i].file_path);
     backTag += `<img src="https://image.tmdb.org/t/p/original${details["images"].backdrops[i].file_path}" alt="" class="media__poster">`;
   }
   if(i < length){
-    backTag += `<div class="load_more">
+    backTag += `<div class="load_more" data-value="backdrops">
                       <img src="https://image.tmdb.org/t/p/original${details["images"].backdrops[i].file_path}" alt="" class="media__poster">
                       <div class="load_more_cnt">
                           <p>Load More <i class="fas fa-angle-right"></i></p>
                       </div>
                   </div>`
   }
-
-  // details["images"].backdrops.forEach(each => {
-  //   backTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
-  // });
   back = backTag;
   media_value[2].innerHTML = details["images"].backdrops.length;
   document.documentElement.style
     .setProperty('--data-back', `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[(details["images"].backdrops.length - 1)].file_path}")`);
 
   // console.log(details["videos"])
+}
+
+function updateAll(){
+  let newTag = "";
+  if(this.dataset.value == "poster"){
+      details["images"].posters.forEach(each => {
+          newTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
+      });
+      poster = newTag;
+  }
+  else{
+      details["images"].backdrops.forEach(each => {
+          newTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
+        });
+        backdrops = newTag;
+  }
+  media_cnt.innerHTML = newTag;
+}
+
+function updateLoadMore(){    
+  load = document.querySelector(".load_more");
+  if(load == undefined) return;
+  load.addEventListener("click", updateAll);
 }
 
 // Recommendation functions
@@ -255,7 +269,7 @@ function setRecommended(){
         cards += result;
         if(movie == movies[movies.length-1]){
           recommend_slider.innerHTML += cards;
-            startCarousel();
+          startCarousel();
     }
 });
 }
@@ -291,10 +305,7 @@ async function fetchMovies() {
   details["recommended"] = result.results;
 }
 
-async function updateContent(){
-  console.log(detailurl, recomendedurl);
-  await fetchMovies();
-  console.log("fetched")
+async function updateContent(){  await fetchMovies();
   header.innerHTML = returnHeader();
   Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}") top`;
   Movieposter.style.backgroundSize = "cover";
@@ -305,10 +316,8 @@ async function updateContent(){
   returnMediaCont();
   media_cnt.innerHTML = poster;
   setRecommended();
+  updateLoadMore();
 }
-
-console.log("hello")
-
 updateContent();
 
 //details[data]

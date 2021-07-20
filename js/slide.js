@@ -87,12 +87,10 @@ function updateCard(){
     // card size calculation;
 
     let sliderCard = document.querySelector(`.slider__cnt[data-value='${this.dataset.parent}'] .card`);
-    console.log(sliderCard);
     
     if(cards[0] == undefined) return;
     let style = window.getComputedStyle ? getComputedStyle(sliderCard, null) : sliderCard.currentStyle;
     let width = parseInt(style.width) + parseInt(style.marginLeft) + parseInt(style.marginRight);
-    console.log(width, this);
 
     let slider = document.querySelector(`.slider__cnt[data-value="${this.dataset.parent}"]`);
     let updateVal = slider.scrollLeft - (slider.scrollLeft % width);
