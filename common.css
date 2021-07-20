@@ -38,6 +38,12 @@ body {
     color: red;
 }
 
+.noimage{
+  width: 300px !important;
+  height: 450px;
+  padding: 1rem;
+}
+
 .slider {
   width: 100%;
   display: flex;
