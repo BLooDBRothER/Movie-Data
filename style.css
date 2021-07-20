@@ -4,7 +4,7 @@ header {
   background: var(--coral);
   color: var(--mid-blue);
   height: 80px;
-  padding: 1rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,6 +15,11 @@ header {
   margin: 1rem auto;
   width: clamp(350px, 50vw, 450px);
   transition: width 0.5s ease;
+}
+
+.nav_title{
+  /* width: 20px; */
+  height: 80px;
 }
 
 ::placeholder {

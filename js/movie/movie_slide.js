@@ -8,7 +8,6 @@ let back = ``;
 function returnMedia(){
     media_cnt.innerHTML = '';
     if(this.classList.contains("photo")){
-        // this.classList.add("active");
         media_cnt.innerHTML = poster;
     }
     else if(this.classList.contains("video")){

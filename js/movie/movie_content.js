@@ -52,7 +52,7 @@ function returnMovieLogo(){
   let path = ""
   details["images"].logos.forEach(logo => {
     if(logo.iso_639_1 == "en"){
-      path = logo.file_path;
+      path = `<img src="https://image.tmdb.org/t/p/original${logo.file_path}" class="poster__logo"></img>`;
     }
   });
   return path;
@@ -66,29 +66,46 @@ function returnProduction(){
   return final;
 }
 
+function returnPosterImage(){
+  return details["images"].posters[0].file_path == null ? `<img src="./Assets/noPoster.jpg" alt="" class="poster__image">` : `<img src="https://image.tmdb.org/t/p/original${details["images"].posters[0].file_path}" alt="" class="poster__image">`
+}
 
+function returnMovieProvider(){
+  if(details["providers"] == undefined) return "";
+  let flatrates = details["providers"].flatrate;
+  let tag = "";
+  flatrates.forEach(stream => {
+    tag += `<img src="https://image.tmdb.org/t/p/original${stream.logo_path}" alt="Stream Logo">`
+  });
+  return tag;
+}
 
 function returnPoster(){
   return `<div class="poster__det-cnt">
-            <div class="poster__production">
-                ${returnProduction()}
-            </div>
             <div class="poster__mix-cnt">
-              <div class="poster__images">
-                  <img src="https://image.tmdb.org/t/p/original${details["images"].posters[0].file_path}" alt="" class="poster__image">
-                  <p class="poster__tagline">${details.data[4] == "" ? "" :details.data[4]}</p>
-              </div>
-              <div class="poster__details">
-                  <div class="poster__release"><h3>Release Date : </h3><span class="poster__value">${details.data[5]}</span></div>
-                  <div class="poster__budget"><h3>Budget : </h3><span class="poster__value">${details.data[6] == 0 ? "-" :details.data[6]}</span></div>
-                  <div class="poster__revenue"><h3>Revenue : </h3><span class="poster__value">${details.data[7] == 0 ? "-" :details.data[7]}</span></div>
-                  <div class="poster__original-title"><h3>Original Title : </h3><span class="poster__value">${details.data[8]}</span></div>
-              </div>
-            </div>
+                <div class="poster__images">
+                    ${returnPosterImage()}
+                    <p class="poster__tagline">${details.data[4] == "" ? "" :details.data[4]}</p>
+                </div>
+                <div class="poster__details">
+                    ${returnMovieLogo()}
+                    <div class="poster__release"><h3>Release Date : </h3><span class="poster__value">${details.data[5]}</span></div>
+                    <div class="poster__budget"><h3>Budget : </h3><span class="poster__value">${details.data[6] == 0 ? "N/A" :details.data[6]}</span></div>
+                    <div class="poster__revenue"><h3>Revenue : </h3><span class="poster__value">${details.data[7] == 0 ? "N/A" :details.data[7]}</span></div>
+                    <div class="poster__original-title"><h3>Original Title : </h3><span class="poster__value">${details.data[8]}</span></div>
+                </div>
+            </div class="poster__mix-cnt">
             <div class="poster__abs">
-                <img src="https://image.tmdb.org/t/p/original${returnMovieLogo()}" class="poster__logo">
-                <i class="fab fa-imdb poster__imdb"></i>
+                <div class="poster__providers">
+                    <div class="poster__links">
+                        ${returnMovieProvider()}
+                        <i class="fab fa-imdb poster__imdb"></i>
+                    </div>
+                </div>
             </div>
+          </div>
+          <div class="poster__production">
+            ${returnProduction()}
           </div>`
 }
 
@@ -111,9 +128,9 @@ function returnGenreOver(){
 // cast function
 
 function returnCastCard(name, character, profile){
-  profile = profile == null ? "" : `https://image.tmdb.org/t/p/original${profile}`;
+  profile = profile == null ? `<img class="card__img nouser" src="./Assets/nouser.svg" alt="">` : `<img class="card__img" src="https://image.tmdb.org/t/p/original${profile}" alt="">`;
   return `  <div class="cast__card card">
-              <img class="card__img" src="${profile}" alt="">
+              ${profile}
               <div class="card__details">
                   <h2 class="card__name">${name}</h2>
               </div>
@@ -134,13 +151,27 @@ function returnCast(){
 
 // media function
 
-function returnMedia(){
-  let posterTag = "", backTag="";
-  details["images"].posters.forEach(each => {
-    posterTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
-  });
+function returnMediaCont(){
+  let posterTag = "", backTag="", i;
+  let length = details["images"].posters.length;
+  console.log(length);
+  for(i=0; (i < 11 && i < length) || (i == length-1); i++){
+    console.log(details["images"].posters[i].file_path);
+    posterTag += `<img src="https://image.tmdb.org/t/p/original${details["images"].posters[i].file_path}" alt="" class="media__poster">`;
+  }
+  if(i < length){
+    posterTag += `<div class="load_more">
+                      <img src="https://image.tmdb.org/t/p/original${details["images"].posters[i].file_path}" alt="" class="media__poster">
+                      <div class="load_more_cnt">
+                          <p>Load More <i class="fas fa-angle-right"></i></p>
+                      </div>
+                  </div>`
+  }
+  // details["images"].posters.forEach(each => {
+  //   posterTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
+  // });
   poster = posterTag;
-  media_value[0].innerHTML = details["images"].posters.length;
+  media_value[0].innerHTML = length;
   document.documentElement.style
     .setProperty('--data-poster', `url("https://image.tmdb.org/t/p/original${details["images"].posters[0].file_path}")`);
 
@@ -156,9 +187,24 @@ function returnMedia(){
   document.documentElement.style
     .setProperty('--data-video', `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}")`);
 
-  details["images"].backdrops.forEach(each => {
-    backTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
-  });
+  length = details["images"].backdrops.length;
+
+  for(i=0; (i < 11 && i < length) || (i == length-1); i++){
+    console.log(details["images"].posters[i].file_path);
+    backTag += `<img src="https://image.tmdb.org/t/p/original${details["images"].backdrops[i].file_path}" alt="" class="media__poster">`;
+  }
+  if(i < length){
+    backTag += `<div class="load_more">
+                      <img src="https://image.tmdb.org/t/p/original${details["images"].backdrops[i].file_path}" alt="" class="media__poster">
+                      <div class="load_more_cnt">
+                          <p>Load More <i class="fas fa-angle-right"></i></p>
+                      </div>
+                  </div>`
+  }
+
+  // details["images"].backdrops.forEach(each => {
+  //   backTag += `<img src="https://image.tmdb.org/t/p/original${each.file_path}" alt="" class="media__poster">`
+  // });
   back = backTag;
   media_value[2].innerHTML = details["images"].backdrops.length;
   document.documentElement.style
@@ -170,7 +216,7 @@ function returnMedia(){
 // Recommendation functions
 
 async function returnRecommendCard(poster_path, title, overview, vote_average, id){
-  poster_path = poster_path==null ? "" : `https://image.tmdb.org/t/p/original${poster_path}`;
+  poster_path = poster_path==null ? `./Assets/noimage.svg` : `https://image.tmdb.org/t/p/original${poster_path}`;
   let genreTag = await returnGenre(id);
   card = `<div class="card" data-id="${id}">
                   <img class="card__img" src="${poster_path}" alt="">
@@ -238,6 +284,7 @@ async function fetchMovies() {
   details["production"] = result.production_companies;
   details["spoken"] = result.spoken_languages;
   details["videos"] = result.videos.results;
+  details["providers"] = result["watch/providers"].results["IN"];
   // console.log(result, details["images"].logos[0].file_path);
   response = await fetch(recomendedurl);
   result = await response.json();
@@ -255,7 +302,7 @@ async function updateContent(){
   genre_over.innerHTML = returnGenreOver();
   cast_slider.innerHTML = returnCast();
   startCarousel();
-  returnMedia();
+  returnMediaCont();
   media_cnt.innerHTML = poster;
   setRecommended();
 }

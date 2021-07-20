@@ -64,7 +64,7 @@ async function fetchMovies(){
 }
 
 async function returnCard(poster_path, title, overview, vote_average, id){
-    poster_path = poster_path==null ? "" : `https://image.tmdb.org/t/p/original${poster_path}`;
+    poster_path = poster_path==null ? `./Assets/noimage.svg` : `https://image.tmdb.org/t/p/original${poster_path}`;
     let genreTag = await returnGenre(id);
     card = `<div class="card" data-id="${id}">
                     <img class="card__img" src="${poster_path}" alt="">
@@ -93,6 +93,9 @@ async function returnGenre(id){
 
 async function updateContent(){
     await fetchMovies();
+    console.log("start");
+    await new Promise(res => { setTimeout(res, 1000); })
+    console.log("finish")
     sliders.forEach(slider => {
         let value = slider.dataset.value
         slider.innerHTML = `<div class="start-drag" data-value="${value}"></div>
@@ -105,7 +108,9 @@ async function updateContent(){
             let result = await returnCard(movie.poster_path, movie.title, movie.overview, movie.vote_average, movie.id);
             cards += result;
             if(movie == movies[movies.length-1]){
-                slider.innerHTML += cards;
+                slider.innerHTML += cards;   
+            }
+            if(slider == sliders[sliders.length-1] && (movie == movies[movies.length-1])){
                 startCarousel();
             }
         });

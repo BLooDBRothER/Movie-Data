@@ -74,7 +74,8 @@ function sliderMove(e){
 function unSet(e){
     if(!pressed) return;
     pressed=false;
-    clicked = true;
+
+    setTimeout(() => {clicked = true;}, 200); 
 
     resetDrag();
 
@@ -134,7 +135,8 @@ async function startCarousel(){
     });
     
     cards.forEach(card => {
-        card.addEventListener("mouseup", (e) => {
+        
+        card.addEventListener("click", function(e){
             if(!clicked) return;
             console.log("clickd", card);
             window.location.href = `./movie.html?movieid=${card.dataset.id}`;
