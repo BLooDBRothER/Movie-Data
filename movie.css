@@ -185,7 +185,7 @@ main{
 
 .poster__production p{
     font-size: .8rem;
-    color: var(--dark-blue);
+    color: var(--grey);
     font-weight: bold;
     display: flex;
     align-items: center;
