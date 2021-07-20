@@ -75,7 +75,7 @@ function returnMovieProvider(){
   let flatrates = details["providers"].flatrate;
   let tag = "";
   flatrates.forEach(stream => {
-    tag += `<img src="https://image.tmdb.org/t/p/original${stream.logo_path}" alt="Stream Logo">`
+    tag += `<img class="provider-logo" src="https://image.tmdb.org/t/p/original${stream.logo_path}" alt="Stream Logo">`
   });
   return tag;
 }
@@ -274,6 +274,18 @@ function setRecommended(){
 });
 }
 
+function updateStream(){
+  let imdb =  document.querySelector(".poster__imdb");
+  let providers = document.querySelectorAll(".provider-logo");
+  imdb.addEventListener("click", ()=>{
+    window.open(imdburl, "_blank");
+  });
+  providers.forEach(provider => {
+    provider.addEventListener("click", ()=>{
+      window.open(streamlink, "_blank");
+    });
+  });
+}
 
 async function fetchMovies() {
   response = await fetch(detailurl);
@@ -299,13 +311,15 @@ async function fetchMovies() {
   details["spoken"] = result.spoken_languages;
   details["videos"] = result.videos.results;
   details["providers"] = result["watch/providers"].results["IN"];
-  // console.log(result, details["images"].logos[0].file_path);
+  streamlink = result["watch/providers"].results["IN"].link;
+  imdburl = `https://www.imdb.com/title/${result.imdb_id}/`
   response = await fetch(recomendedurl);
   result = await response.json();
   details["recommended"] = result.results;
 }
 
-async function updateContent(){  await fetchMovies();
+async function updateContent(){  
+  await fetchMovies();
   header.innerHTML = returnHeader();
   Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}") top`;
   Movieposter.style.backgroundSize = "cover";
@@ -317,6 +331,7 @@ async function updateContent(){  await fetchMovies();
   media_cnt.innerHTML = poster;
   setRecommended();
   updateLoadMore();
+  updateStream();
 }
 updateContent();
 

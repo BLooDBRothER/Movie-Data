@@ -207,6 +207,10 @@ main{
     cursor: pointer;
 }
 
+.provider-logo{
+    cursor: pointer;
+}
+
 .nouser{
     width: 200px;
     height: 300px;
