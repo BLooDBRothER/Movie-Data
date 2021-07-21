@@ -26,6 +26,26 @@ body {
   min-height: 100vh;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--mid-blue);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--light-blue);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--coral);
+}
+
 .green{
     color: greenyellow;
 }
@@ -190,4 +210,22 @@ right: 0;
 padding: 1rem;
 font-size: 1.3rem;
 z-index: 10;
+}
+
+@media (max-width: 300px){
+  .card:not(.slider__cnt[data-value="cast"] .card){
+      min-width: 200px;
+      width: 200px;
+      height: 500px;
+  }
+  .card__title{
+      font-size: 1rem;
+  }
+  .card__genre{
+      font-size: .5rem;
+  }
+  .card__overview{
+      font-size: .8rem;
+      bottom: -200%;
+  }
 }

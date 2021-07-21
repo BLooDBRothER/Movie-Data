@@ -154,7 +154,7 @@ function returnCast(){
 function returnMediaCont(){
   let posterTag = "", backTag="", i;
   let length = details["images"].posters.length;
-  for(i=0; (i < 11 && i < length) || (i == length-1); i++){
+  for(i=0; (i < 9 && i < length) || (i == length-1); i++){
     posterTag += `<img src="https://image.tmdb.org/t/p/original${details["images"].posters[i].file_path}" alt="" class="media__poster">`;
   }
   if(i < length){
@@ -185,7 +185,7 @@ function returnMediaCont(){
 
   length = details["images"].backdrops.length;
 
-  for(i=0; (i < 11 && i < length) || (i == length-1); i++){
+  for(i=0; (i < 9 && i < length) || (i == length-1); i++){
     backTag += `<img src="https://image.tmdb.org/t/p/original${details["images"].backdrops[i].file_path}" alt="" class="media__poster">`;
   }
   if(i < length){

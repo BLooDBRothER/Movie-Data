@@ -46,3 +46,4 @@ close_ic.addEventListener("click", function(){
     searchInput.value = "";
     searchInput.style.pointerEvents = "none";
 });
+

@@ -14,7 +14,7 @@
 }
 
 .header{
-    height: clamp(60px, 20vw, 130px);
+    min-height: clamp(60px, 20vw, 130px);
     width: 100%;
     padding: 1rem 0 0 clamp(.5rem, 1vw ,2rem);
     display: flex;
@@ -38,15 +38,18 @@
 .header__right{
     display: flex;
     align-items: center;
+    min-height: clamp(60px, 20vw, 130px);
 }
 
 .header__runtime{
     font-size: clamp(.8rem, 4vw, 1.7rem);
+    margin-right: .5rem;
 }
 
 .header__title{
     color: var(--light-blue);
     font-size: clamp(.8rem, 7vw, 3rem);
+    margin-bottom: .3rem;
 }
 
 .header__right > *{
@@ -66,10 +69,12 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    white-space: nowrap;
 }
 
 .header__ic{
     color: var(--grey);
+    margin-bottom: 1rem;
 }
 
 .header__original{
@@ -529,6 +534,10 @@ main{
 
     .poster__logo{
         width: 150px;
+    }
+
+    .media__poster{
+        width: 80%;
     }
 }
 
