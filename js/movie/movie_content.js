@@ -31,7 +31,7 @@ function returnHeader() {
   return `<div class="header__left">
             <h1 class="header__title">${details.data[0]}</h1>
             <div class="header__details">
-                <div class="header__runtime">${details.data[1]}mins</div>
+                <div class="header__runtime">${details.data[1] ? details.data[1] : `-`}mins</div>
                 <div class="header__status">${returnStatus(details.data[2])}</div>
             </div>
           </div>
@@ -64,6 +64,7 @@ function returnProduction(){
 }
 
 function returnPosterImage(){
+  if(details["images"].posters.length == 0){ return `<img src="./Assets/noPoster.jpg" alt="" class="poster__image">`}
   return details["images"].posters[0].file_path == null ? `<img src="./Assets/noPoster.jpg" alt="" class="poster__image">` : `<img src="https://image.tmdb.org/t/p/original${details["images"].posters[0].file_path}" alt="" class="poster__image">`
 }
 
@@ -166,9 +167,11 @@ function returnMediaCont(){
  
   poster = posterTag;
   media_value[0].innerHTML = length;
-  document.documentElement.style
-    .setProperty('--data-poster', `url("https://image.tmdb.org/t/p/original${details["images"].posters[0].file_path}")`);
+  if(length != 0)
+    document.documentElement.style
+      .setProperty('--data-poster', `url("https://image.tmdb.org/t/p/original${details["images"].posters[0].file_path}")`);
 
+  length = details["images"].backdrops.length;
   let videoTag = "";
   details["videos"].forEach(video => {
     if(! video.site == "YouTube") return;
@@ -178,10 +181,11 @@ function returnMediaCont(){
   });
   video = videoTag;
   media_value[1].innerHTML = details["videos"].length;
-  document.documentElement.style
-    .setProperty('--data-video', `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}")`);
+  if(length != 0)
+    document.documentElement.style
+      .setProperty('--data-video', `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}")`);
 
-  length = details["images"].backdrops.length;
+  
 
   for(i=0; (i < 9 && i < length) || (i == length-1); i++){
     backTag += `<img src="https://image.tmdb.org/t/p/original${details["images"].backdrops[i].file_path}" alt="" class="media__poster">`;
@@ -196,10 +200,9 @@ function returnMediaCont(){
   }
   back = backTag;
   media_value[2].innerHTML = details["images"].backdrops.length;
-  document.documentElement.style
-    .setProperty('--data-back', `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[(details["images"].backdrops.length - 1)].file_path}")`);
-
-  // console.log(details["videos"])
+  if(length != 0)
+    document.documentElement.style
+      .setProperty('--data-back', `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[(details["images"].backdrops.length - 1)].file_path}")`);
 }
 
 function updateAll(){
@@ -318,8 +321,10 @@ async function fetchMovies() {
 async function updateContent(){  
   await fetchMovies();
   header.innerHTML = returnHeader();
-  Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}") top`;
-  Movieposter.style.backgroundSize = "cover";
+  if(details["images"].backdrops.length != 0){
+    Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}") top`;
+    Movieposter.style.backgroundSize = "cover";
+  }
   poster_cnt.innerHTML = returnPoster();
   genre_over.innerHTML = returnGenreOver();
   cast_slider.innerHTML = returnCast();
