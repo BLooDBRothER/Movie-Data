@@ -60,7 +60,7 @@
     width: 100%;
     margin: .2rem 0 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .header__language, .header__rate{
@@ -364,9 +364,9 @@ main{
 .media__video__container {
     position: relative;
     overflow: hidden;
-    margin: 2rem;
-    width: clamp(200px, 40vw, 400px);
-    height: clamp(120px, 30vw, 220px);
+    margin: 1rem;
+    width: clamp(200px, 40vw, 500px);
+    height: clamp(120px, 30vw, 281px);
   }
   
 .media__video__container iframe{
