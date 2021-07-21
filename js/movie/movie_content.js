@@ -74,6 +74,7 @@ function returnPosterImage(){
 function returnMovieProvider(){
   if(details["providers"] == undefined) return "";
   let flatrates = details["providers"].flatrate;
+  if(flatrates == undefined) return "";
   let tag = "";
   flatrates.forEach(stream => {
     tag += `<img class="provider-logo" src="https://image.tmdb.org/t/p/original${stream.logo_path}" alt="Stream Logo">`
