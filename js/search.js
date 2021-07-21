@@ -1,4 +1,4 @@
-const search_items = document.querySelector(".search__items");
+
 let search_item;
 
 async function updateSearchList(){

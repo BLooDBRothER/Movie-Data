@@ -114,6 +114,7 @@ header {
 .close-ic {
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 #title {
@@ -163,6 +164,10 @@ main {
 
   .search-active {
     width: 70%;
+  }
+
+  .search-active .search-txt{
+    pointer-events: initial;
   }
 
   .search-txt {
