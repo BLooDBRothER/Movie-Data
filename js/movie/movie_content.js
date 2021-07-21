@@ -329,9 +329,9 @@ async function updateContent(){
   startCarousel();
   returnMediaCont();
   media_cnt.innerHTML = poster;
-  setRecommended();
   updateLoadMore();
   updateStream();
+  setRecommended();
 }
 updateContent();
 
