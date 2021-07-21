@@ -24,6 +24,8 @@ header {
   width: 100%;
   height: 400px;
   overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 2rem;
 }
 
 .search__item{
@@ -31,19 +33,20 @@ header {
   z-index: 1;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.3rem 1rem;
   text-align: center;
-  border-left: 1px solid var(--light-blue);
-  border-right: 1px solid var(--light-blue);
-  border-radius: 2rem;
+  /* border-left: 1px solid var(--light-blue); */
+  /* border-right: 1px solid var(--light-blue); */
+  /* border-radius: 2rem; */
   /* margin: .1rem 0; */
+  border-bottom: 1px solid var(--light-blue);
   background-color: var(--dark-blue);
   color: var(--grey);
   cursor: pointer;
 }
 
 .search__item:hover{
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   background-color: var(--mid-blue);
 }
 
