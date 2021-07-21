@@ -4,21 +4,17 @@ const search_ic = document.querySelector(".search-ic-cnt");
 const close_ic = document.querySelector(".close-ic-cnt");
 
 //api URL
-// const Rurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&certification_country=US&certification=R&sort_by=vote_average.desc";
 const trendingurl = "https://api.themoviedb.org/3/trending/movie/day?api_key=5bbd27f8962722b1aa921d43db36211f";
-// const upcomingurl = "https://api.themoviedb.org/3/movie/upcoming?api_key=5bbd27f8962722b1aa921d43db36211f&region=IN&page=1";
 const popularurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&region=IN&sort_by=popularity.desc";
 const animatedurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_genres=16";
-// const horrorurl = "https://api.themoviedb.org/3/search/movie?api_key=5bbd27f8962722b1aa921d43db36211f&query=Horror"; 
 const horrorurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_genres=27";
-// const horrorurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_cast=91547";
 const marvelurl1 = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_companies=420&page=1";
 const marvelurl2 = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_companies=420&page=2";
 const tamilurl1 = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_original_language=ta";
 const tamilurl2 = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_original_language=ta&page=2";
 const upurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_companies=6704";
-const hpurl = "https://api.themoviedb.org/3/collection/1241?api_key=5bbd27f8962722b1aa921d43db36211f"
-// const tamilurl = "https://api.themoviedb.org/3/discover/movie?api_key=5bbd27f8962722b1aa921d43db36211f&with_original_language=ta&sort_by=release_date.desc"
+const hpurl = "https://api.themoviedb.org/3/collection/1241?api_key=5bbd27f8962722b1aa921d43db36211f";
+const searchurl = "https://api.themoviedb.org/3/search/movie?api_key=5bbd27f8962722b1aa921d43db36211f&";
 
 
 //To Update image

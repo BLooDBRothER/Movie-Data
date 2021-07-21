@@ -50,12 +50,8 @@ function returnHeader() {
 //Poster Function
 
 function returnMovieLogo(){
-  let path = ""
-  details["images"].logos.forEach(logo => {
-    if(logo.iso_639_1 == "en"){
-      path = `<img src="https://image.tmdb.org/t/p/original${logo.file_path}" class="poster__logo"></img>`;
-    }
-  });
+  let path = details["images"].logos.find(logo => logo.iso_639_1 == "en");
+  path = path ? `<img src="https://image.tmdb.org/t/p/original${path.file_path}" class="poster__logo"></img>` : "";
   return path;
 }
 
