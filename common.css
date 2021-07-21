@@ -46,6 +46,11 @@ body {
   background: var(--coral);
 }
 
+
+ul{
+ list-style-type: none; 
+}
+
 .green{
     color: greenyellow;
 }

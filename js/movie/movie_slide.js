@@ -1,4 +1,4 @@
-const media_cnt = document.querySelector(".media__display");
+
 const media_sel = document.querySelectorAll(".media__poster");
 
 let video = ``;

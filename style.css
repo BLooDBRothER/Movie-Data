@@ -17,8 +17,23 @@ header {
   transition: width 0.5s ease;
 }
 
+.search ul{
+  position: absolute;
+  top: 100;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.search__item{
+  font-size: 1.2rem;
+  z-index: 1;
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--dark-blue);
+  /* background-color: red; */
+}
+
 .nav_title{
-  /* width: 20px; */
   height: 80px;
 }
 

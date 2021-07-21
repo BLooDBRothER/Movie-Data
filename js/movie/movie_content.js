@@ -6,6 +6,7 @@ const cast_slider = document.querySelector(".slider__cnt[data-value='cast']");
 const recommend_slider = document.querySelector(".slider__cnt[data-value='recommendation']");
 const media_h3 = document.querySelectorAll(".media__selection h3");
 const media_value = document.querySelectorAll(".media__selection .value");
+const media_cnt = document.querySelector(".media__display");
 
 //Header Function
 
