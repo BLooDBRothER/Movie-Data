@@ -84,7 +84,11 @@ async function returnGenre(id){
     const detailurl = `https://api.themoviedb.org/3/movie/${id}?api_key=5bbd27f8962722b1aa921d43db36211f`;
     let response = await fetch(detailurl);
     let result = await response.json();
+    
     let genres = result.genres;
+    if(genres.length > 5){
+        genres.splice(5, (genres.length-5));
+    }
     movieGenre = genres.map(genre => {
         return `<div class="card__genre">${genre.name}</div>`
     }).join("");

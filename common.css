@@ -51,6 +51,16 @@ ul{
  list-style-type: none; 
 }
 
+header {
+  background: var(--coral);
+  color: var(--mid-blue);
+  height: 80px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .green{
     color: greenyellow;
 }

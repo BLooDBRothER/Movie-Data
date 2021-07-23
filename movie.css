@@ -13,6 +13,10 @@
     --data-back : url("");
 }
 
+header{
+    background-color: var(--light-blue);
+}
+
 .header{
     min-height: clamp(60px, 20vw, 130px);
     width: 100%;
