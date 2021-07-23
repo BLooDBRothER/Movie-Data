@@ -1,3 +1,4 @@
+
 .search {
   position: relative;
   margin: 1rem auto;
@@ -23,10 +24,6 @@
   margin: 0 auto;
   padding: 1.3rem 1rem;
   text-align: center;
-  /* border-left: 1px solid var(--light-blue); */
-  /* border-right: 1px solid var(--light-blue); */
-  /* border-radius: 2rem; */
-  /* margin: .1rem 0; */
   border-bottom: 1px solid var(--light-blue);
   background-color: var(--dark-blue);
   color: var(--grey);

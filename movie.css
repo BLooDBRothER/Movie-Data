@@ -241,7 +241,7 @@ main{
     overflow: hidden;
     font-size: 1rem;
     text-align: center;
-    cursor: grab !important;
+    cursor: grab;
     user-select: none;
 }
 

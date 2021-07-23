@@ -50,7 +50,8 @@ function setX(e){
     valX = (e.pageX || e.touches[0].pageX);
     startX = (e.pageX || e.touches[0].pageX) - this.offsetLeft;
     scrollLeft = this.scrollLeft;
-    this.style.cursor = "grabbing";  
+    this.style.cursor = "grabbing";
+    cards.forEach(card => {card.classList.contains("cast__card") ? card.style.cursor = "grabbing" : ""});   
 }
 
 function sliderMove(e){
@@ -80,7 +81,7 @@ function unSet(e){
     resetDrag();
 
     sliders.forEach(slider => {slider.style.cursor = "grab";});
-    cards.forEach(card => {card.style.cursor = "pointer";}); 
+    cards.forEach(card => {card.classList.contains("cast__card") ? card.style.cursor = "grab" : card.style.cursor = "pointer";}); 
 }
 
 function updateCard(){
@@ -135,7 +136,7 @@ async function startCarousel(){
     cards.forEach(card => {
         
         card.addEventListener("click", function(e){
-            if(!clicked) return;
+            if(!clicked || this.classList.contains("cast__card")) return;
             console.log("clickd", card);
             window.location.href = `./movie.html?movieid=${card.dataset.id}`;
         });

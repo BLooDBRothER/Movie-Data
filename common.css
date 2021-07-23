@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&family=Raleway+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento&display=swap');
+
 *,
 *::after,
 *::before {
@@ -13,6 +16,8 @@
   --coral: #96858f;
   --grey: #9099a2;
   --snadal: #d5d5d5;
+  --mate-cs: 'Mate SC', serif;
+  --quat: 'Quattrocento', serif;
 }
 
 html {
@@ -20,6 +25,11 @@ html {
   color: var(--coral);
   min-height: 100vh;
   overflow-x: hidden;
+  font-family: var(--quat);
+}
+
+h1, h2, h3, h4{
+  font-family: var(--raledots);
 }
 
 body {
@@ -223,7 +233,7 @@ bottom: 0;
 right: 0;
 /* background-color: var(--dark-blue); */
 padding: 1rem;
-font-size: 1.3rem;
+font-size: 1.1rem;
 z-index: 10;
 }
 
