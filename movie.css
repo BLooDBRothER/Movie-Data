@@ -201,8 +201,7 @@ main{
 }
 
 .production__logo, .poster__production p{
-    /* width: clamp(50px, 20vw, 200px); */
-    height: 25px;
+    height: 10px;
     box-sizing: unset;
 }
 
