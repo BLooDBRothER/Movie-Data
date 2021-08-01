@@ -1,3 +1,4 @@
+const body = document.querySelector("body");
 const search = document.querySelector(".search");
 const searchInput = document.querySelector(".search-txt");
 const search_ic = document.querySelector(".search-ic-cnt");
@@ -45,3 +46,18 @@ close_ic.addEventListener("click", function(){
     // searchInput.style.pointerEvents = "none";
 });
 
+
+function closeSearch(){
+    searchInput.value = "";
+}
+
+window.addEventListener("keydown", (e) => {
+    if(e.key == "Escape"){
+        closeSearch();
+    }
+});
+
+body.addEventListener("click", (e) => {
+    closeSearch();
+    search_items.innerHTML = "";
+});
