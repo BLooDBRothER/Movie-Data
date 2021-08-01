@@ -320,6 +320,7 @@ async function fetchMovies() {
 
 async function updateContent(){  
   await fetchMovies();
+  document.querySelector("title").innerText = details["data"][0]
   header.innerHTML = returnHeader();
   if(details["images"].backdrops.length != 0){
     Movieposter.style.background = `url("https://image.tmdb.org/t/p/original${details["images"].backdrops[0].file_path}") top`;
