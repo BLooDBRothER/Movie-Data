@@ -71,6 +71,10 @@ header {
   justify-content: space-between;
 }
 
+.nav_title{
+  height: 80px;
+}
+
 .green{
     color: greenyellow;
 }

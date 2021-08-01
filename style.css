@@ -31,16 +31,11 @@
 }
 
 .search__item:hover{
-  padding: 1.5rem 1rem;
   background-color: var(--mid-blue);
 }
 
 .search__item img{
   width: 20px;
-}
-
-.nav_title{
-  height: 80px;
 }
 
 ::placeholder {
