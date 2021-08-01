@@ -71,6 +71,10 @@ header {
   justify-content: space-between;
 }
 
+header a{
+  height: 80px;
+}
+
 .nav_title{
   height: 80px;
 }
