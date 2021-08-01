@@ -115,6 +115,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: relative;
 }
 
 .poster__mix-cnt{
@@ -137,7 +138,7 @@ main{
     font-size: clamp(1rem, 3vw, 2rem);
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(.2rem);
+    /* backdrop-filter: blur(.2rem); */
 }
 
 .poster__details > *{
@@ -201,8 +202,14 @@ main{
 }
 
 .production__logo, .poster__production p{
-    height: 10px;
+    height: 15px;
     box-sizing: unset;
+}
+
+.production__logo:hover, .poster__production p:hover{
+    background-color: white;
+    color: var(--dark-blue);
+    transform: scale(1.5);
 }
 
 .poster__imdb{
@@ -352,6 +359,7 @@ main{
 
 .media__display{
     display: flex;
+    align-items: flex-start;
     flex-wrap: wrap;
     justify-content: space-evenly;
     flex: 1;
@@ -360,7 +368,9 @@ main{
 }
 
 .media__poster{
+    min-width: 100px;
     width: 300px;
+    height: auto;
     margin: 1rem;
 }
 

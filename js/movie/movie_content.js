@@ -42,7 +42,7 @@ function returnHeader() {
             </div class="header__rate">
             <div class="header__language">
                 <i class="fas fa-language header__ic"></i>
-                <div class="header__original">${details["spoken"][0].name}</div>
+                <div class="header__original">${details["spoken"][0].name === "" ? details["spoken"][0].english_name : details["spoken"][0].name}</div>
             </div> 
         </div>`;
 }
