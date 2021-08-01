@@ -97,9 +97,7 @@ async function returnGenre(id){
 
 async function updateContent(){
     await fetchMovies();
-    console.log("start");
     await new Promise(res => { setTimeout(res, 1000); })
-    console.log("finish")
     sliders.forEach(slider => {
         let value = slider.dataset.value
         slider.innerHTML = `<div class="start-drag" data-value="${value}"></div>
