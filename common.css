@@ -62,7 +62,7 @@ ul{
 }
 
 header {
-  background: var(--coral);
+  background: var(--light-blue);
   color: var(--mid-blue);
   height: 80px;
   padding: 0 1rem;
