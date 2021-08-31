@@ -56,6 +56,10 @@ body {
   background: var(--coral);
 }
 
+img{
+  background-color: var(--mid-blue);
+}
+
 
 ul{
  list-style-type: none; 
