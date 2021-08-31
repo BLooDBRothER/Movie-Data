@@ -1,7 +1,10 @@
-# Movie-Data
-It's a movie Site developed using TMDB API.
+# Blood's Movie DB
 
-[Click Me!](https://bmdb.netlify.app/)
+## [Click Me!](https://bmdb.netlify.app/)
+
+### Purpose
+* I developed this site for learnig purpose.
+* I learned how to use API and load different data to a HTML template using JS.
 
 ### Sample Image
 <img src="https://github.com/BLooDBRothER/Image/blob/main/Movie-site/sample1.png" width="600px">
