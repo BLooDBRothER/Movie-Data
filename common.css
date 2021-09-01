@@ -272,8 +272,18 @@ footer{
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 150px;
+  flex-wrap: wrap;
+  min-height: 150px;
   padding: .5rem 2rem;
+}
+
+footer > div{
+  margin: 1rem;
+  text-align: center;
+}
+
+h2{
+  margin: 0 0 1rem 0;
 }
 
 .credits{

@@ -67,7 +67,7 @@ async function returnCard(poster_path, title, overview, vote_average, id){
     poster_path = poster_path==null ? `./Assets/noimage.svg` : `https://image.tmdb.org/t/p/original${poster_path}`;
     let genreTag = await returnGenre(id);
     card = `<div class="card" data-id="${id}">
-                    <img class="card__img" src="${poster_path}" alt="">
+                    <img class="card__img" src="${poster_path}" alt="" loading="lazy">
                     <div class="card__details">
                         <h2 class="card__title">${title}</h2>
                         <div class="card__genres">
