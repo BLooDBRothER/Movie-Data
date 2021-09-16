@@ -159,7 +159,7 @@ function returnGenreOver() {
 function returnCastCard(name, character, profile) {
   profile =
     profile == null
-      ? `<img class="card__img nouser" src="./Assets/nouser.svg" alt=""> loading="lazy"`
+      ? `<img class="card__img nouser" src="./Assets/nouser.svg" alt="" loading="lazy">`
       : `<img class="card__img" src="https://image.tmdb.org/t/p/original${profile}" alt="" loading="lazy">`;
   return `  <div class="cast__card card">
               ${profile}
