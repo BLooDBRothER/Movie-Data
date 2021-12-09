@@ -2,6 +2,8 @@
 
 ## [Click Me!](https://bmdb.netlify.app/)
 
+### [Home page UI design(Figma)](https://www.figma.com/file/V75qtcqe97FNg8HbJzNyTR/Movie?node-id=0%3A1)
+
 ### Purpose
 * I developed this site for learnig purpose.
 * I learned how to use API and load different data to a HTML template using JS.
